@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import pagarme from "pagarme/browser";
+import mock from "./mock";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  componentDidMount() {
+    pagarme.client
+      .connect({ api_key: process.env.REACT_APP_API_KEY })
+      .then(client => client.transactions.all())
+      .then(transactions => console.log(transactions))
+      .catch(error => console.error(error));
+  }
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          {mock.map(item => {
+            return (
+              <div key={item.productId}>
+                <p>{item.name}</p>
+                <p>{item.price}</p>
+              </div>
+            );
+          })}
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;
