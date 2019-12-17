@@ -1,7 +1,9 @@
 import React from "react";
 import pagarme from "pagarme/browser";
 import mock from "./mock";
-import "./App.css";
+
+import Header from "./components/Header";
+import ProductCard from "./components/ProductCard";
 
 class App extends React.Component {
   componentDidMount() {
@@ -13,17 +15,13 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          {mock.map(item => {
-            return (
-              <div key={item.productId}>
-                <p>{item.name}</p>
-                <p>{item.price}</p>
-              </div>
-            );
-          })}
-        </header>
+      <div>
+        <Header />
+        {mock.length > 0 && mock.map(item => {
+          return (
+             <ProductCard key={item.productId} product={item}/>
+          );
+        })}
       </div>
     );
   }
