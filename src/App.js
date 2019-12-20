@@ -1,4 +1,6 @@
 import React from "react";
+import Grid from "@material-ui/core/Grid";
+
 import pagarme from "pagarme/browser";
 import mock from "./mock";
 
@@ -17,11 +19,16 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        {mock.length > 0 && mock.map(item => {
-          return (
-             <ProductCard key={item.productId} product={item}/>
-          );
-        })}
+        <Grid container direction="row" justify="center" alignItems="center" spacing={2}>
+          {mock.length > 0 &&
+            mock.map(item => {
+              return (
+                <Grid item>
+                  <ProductCard key={item.productId} product={item} />
+                </Grid>
+              );
+            })}
+        </Grid>
       </div>
     );
   }

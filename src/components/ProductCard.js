@@ -1,65 +1,56 @@
 import React from "react";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import IconButton from "@material-ui/core/IconButton";
+import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import SkipNextIcon from "@material-ui/icons/SkipNext";
 
-//Utils
 import formatCurrency from "../utils/formatCurrency";
+import formatImage from "../utils/formatImage";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   card: {
-    display: "flex"
+    width: 345
   },
-  details: {
-    display: "flex",
-    flexDirection: "column"
-  },
-  content: {
-    flex: "1 0 auto"
-  },
-  cover: {
-    width: 151
-  },
-  controls: {
-    display: "flex",
-    alignItems: "center",
-    paddingLeft: theme.spacing(1),
-    paddingBottom: theme.spacing(1)
-  },
-  playIcon: {
-    height: 38,
-    width: 38
+  img: {
+    objectFit: "contain"
   }
-}));
+});
 
 const ProductCard = props => {
   const classes = useStyles();
-  const theme = useTheme();
-  console.log(props);
 
   return (
     <Card className={classes.card}>
-      <div className={classes.details}>
-        <CardContent className={classes.content}>
-          <Typography component="h5" variant="h5">
+      <CardActionArea>
+        <CardMedia
+          className={classes.img}
+          component="img"
+          alt={props.product.name}
+          height="200"
+          image={formatImage(props.product.image)}
+          title={props.product.name}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
             {props.product.name}
           </Typography>
-          <Typography variant="subtitle1" color="textSecondary">
+          <Typography variant="body2" color="textSecondary" component="p">
             {formatCurrency(props.product.price, props.product.currency)}
           </Typography>
         </CardContent>
-      </div>
-      <CardMedia
-        className={classes.cover}
-        image="/static/images/cards/live-from-space.jpg"
-        title="Live from space album cover"
-      />
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary">
+          Detalhes
+        </Button>
+        <Button size="small" color="primary">
+          Comprar
+        </Button>
+      </CardActions>
     </Card>
   );
 };
