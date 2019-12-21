@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -44,9 +46,10 @@ const ProductCard = props => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" to="/product-detail" component={Link}>
           Detalhes
         </Button>
+   
         <Button size="small" color="primary">
           Comprar
         </Button>
