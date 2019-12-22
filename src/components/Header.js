@@ -1,7 +1,10 @@
 import React from "react";
+//REDUX
+import { connect } from "react-redux";
+//REACT ROUTER
 import { Link } from "react-router-dom";
-
-import { fade, makeStyles } from "@material-ui/core/styles";
+//MATERIAL-UI
+import { fade, withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -14,7 +17,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import MoreIcon from "@material-ui/icons/MoreVert";
 
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
   grow: {
     flexGrow: 1
   },
@@ -77,62 +80,76 @@ const useStyles = makeStyles(theme => ({
       display: "none"
     }
   }
-}));
+});
 
-const Header = () => {
-  const classes = useStyles();
+class Header extends React.Component {
+  render() {
+    const { classes, cart } = this.props;
 
-  return (
-    <div className={classes.grow}>
-      <AppBar position="fixed">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-            to="/"
-            component={Link}
-          >
-            <HomeIcon />
-          </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Ecommerce
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+    return (
+      <div className={classes.grow}>
+        <AppBar position="fixed">
+          <Toolbar>
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="open drawer"
+              to="/"
+              component={Link}
+            >
+              <HomeIcon />
+            </IconButton>
+            <Typography className={classes.title} variant="h6" noWrap>
+              Ecommerce
+            </Typography>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Pesquisar"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput
+                }}
+                inputProps={{ "aria-label": "search" }}
+              />
             </div>
-            <InputBase
-              placeholder="Pesquisar"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div>
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <IconButton color="inherit">
-              <Badge badgeContent={1} color="secondary">
-                <ShoppingCartIcon />
-              </Badge>
-            </IconButton>
-            <IconButton color="inherit">
-              <AccountCircle />
-            </IconButton>
-          </div>
-          <div className={classes.sectionMobile}>
-            <IconButton color="inherit">
-              <MoreIcon />
-            </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar>
-      <main className={classes.main} />
-    </div>
-  );
+            <div className={classes.grow} />
+            <div className={classes.sectionDesktop}>
+              <IconButton color="inherit">
+                <Badge
+                  badgeContent={cart.cartItems}
+                  // badgeContent={cart.cartItems.length}
+                  color="secondary"
+                  to="/cart"
+                  component={Link}
+                >
+                  <ShoppingCartIcon style={{ color: "#FFFFFF" }} />
+                </Badge>
+              </IconButton>
+              <IconButton color="inherit">
+                <AccountCircle />
+              </IconButton>
+            </div>
+            <div className={classes.sectionMobile}>
+              <IconButton color="inherit">
+                <MoreIcon />
+              </IconButton>
+            </div>
+          </Toolbar>
+        </AppBar>
+        <main className={classes.main} />
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    cart: state.cart
+  };
 };
 
-export default Header;
+export default connect(mapStateToProps)(withStyles(styles)(Header));

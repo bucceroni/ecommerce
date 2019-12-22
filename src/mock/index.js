@@ -1,6 +1,6 @@
 const mock = [
   {
-    productId: 1,
+    id: 1,
     name: "iPad Pro",
     brand: "Apple",
     description:
@@ -12,7 +12,7 @@ const mock = [
     store: "Magalu"
   },
   {
-    productId: 2,
+    id: 2,
     name: "MacBook Air",
     brand: "Apple",
     description:
@@ -24,7 +24,7 @@ const mock = [
     store: "Americanas"
   },
   {
-    productId: 3,
+    id: 3,
     name: "iPhone 8",
     brand: "Apple",
     description: "iPhone 8 128GB Gold iOS Câmera 12MP 4G Wi-Fi - Apple",
@@ -35,7 +35,7 @@ const mock = [
     store: "Americanas"
   },
   {
-    productId: 4,
+    id: 4,
     name: "AirPods",
     brand: "Apple",
     description: "AirPods com estojo de recarga - Apple",
@@ -46,7 +46,7 @@ const mock = [
     store: "Americanas"
   },
   {
-    productId: 5,
+    id: 5,
     name: "iPad Pro",
     brand: "Apple",
     description:
@@ -58,7 +58,7 @@ const mock = [
     store: "Americanas"
   },
   {
-    productId: 6,
+    id: 6,
     name: "Apple Watch",
     brand: "Apple",
     description:
@@ -70,7 +70,7 @@ const mock = [
     store: "Americanas"
   },
   {
-    productId: 7,
+    id: 7,
     name: "Notebook Dell Inspiron",
     brand: "Dell",
     description:
@@ -82,7 +82,7 @@ const mock = [
     store: "Americanas"
   },
   {
-    productId: 8,
+    id: 8,
     name: "Mochila Dell",
     brand: "Dell",
     description: "Mochila para Notebook Dell Pro 15.6",
@@ -93,7 +93,7 @@ const mock = [
     store: "Americanas"
   },
   {
-    productId: 9,
+    id: 9,
     name: "Notebook Samsung Essentials",
     brand: "Samsung",
     description:
@@ -105,7 +105,7 @@ const mock = [
     store: "Magalu"
   },
   {
-    productId: 10,
+    id: 10,
     name: "Smartphone Samsung Galaxy A20",
     brand: "Samsung",
     description:

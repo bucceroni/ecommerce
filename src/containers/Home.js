@@ -1,4 +1,9 @@
 import React from "react";
+//REDUX
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as actions from "../actions/cartActions";
+//MATERIAL-UI
 import Grid from "@material-ui/core/Grid";
 
 import pagarme from "pagarme/browser";
@@ -25,10 +30,13 @@ class Home extends React.Component {
           spacing={2}
         >
           {mock.length > 0 &&
-            mock.map(item => {
+            mock.map(product => {
               return (
-                <Grid key={item.productId} item>
-                  <ProductCard product={item} />
+                <Grid key={product.id} item>
+                  <ProductCard
+                    product={product}
+                    setCartItem={() => actions.setCartItem(product)}
+                  />
                 </Grid>
               );
             })}
@@ -38,4 +46,15 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: bindActionCreators(
+      {
+        ...actions
+      },
+      dispatch
+    )
+  };
+};
+
+export default connect(mapDispatchToProps)(Home);

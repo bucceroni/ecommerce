@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
+//MATERIAL-UI
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -9,7 +8,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-
+//UTILS
 import formatCurrency from "../utils/formatCurrency";
 import formatImage from "../utils/formatImage";
 
@@ -22,7 +21,7 @@ const useStyles = makeStyles({
   }
 });
 
-const ProductCard = props => {
+const ProductDetail = props => {
   const classes = useStyles();
 
   return (
@@ -43,20 +42,22 @@ const ProductCard = props => {
           <Typography variant="body2" color="textSecondary" component="p">
             {formatCurrency(props.product.price, props.product.currency)}
           </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {props.product.brand}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {props.product.description}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {props.product.store}
+          </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button
-          size="small"
-          color="primary"
-          to={`/detail/${props.product.id}`}
-          component={Link}
-          params={props}
-        >
-          Detalhes
+        <Button size="small" color="primary">
+          Comprar Agora
         </Button>
-
-        <Button size="small" color="primary" onClick={props.setCartItem}>
+        <Button size="small" color="primary">
           Adicionar ao Carrinho
         </Button>
       </CardActions>
@@ -64,4 +65,4 @@ const ProductCard = props => {
   );
 };
 
-export default ProductCard;
+export default ProductDetail;
