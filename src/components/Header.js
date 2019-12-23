@@ -120,8 +120,7 @@ class Header extends React.Component {
             <div className={classes.sectionDesktop}>
               <IconButton color="inherit">
                 <Badge
-                  badgeContent={cart.cartItems}
-                  // badgeContent={cart.cartItems.length}
+                  badgeContent={cart.cartItems.length}
                   color="secondary"
                   to="/cart"
                   component={Link}

@@ -1,10 +1,9 @@
 import * as types from "./types";
 
-export function setCartItem(product) {
-  console.log("action", product);
-  return dispatch =>
+export function addCartItem(product) {
+  return async dispatch =>
     dispatch({
-      type: types.SET_CART_ITEM,
-      payload: 4
+      type: types.ADD_CART_ITEM,
+      payload: product
     });
 }

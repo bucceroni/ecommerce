@@ -20,6 +20,7 @@ class Home extends React.Component {
       .catch(error => console.error(error));
   }
   render() {
+    const { actions } = this.props;
     return (
       <div>
         <Grid
@@ -35,7 +36,7 @@ class Home extends React.Component {
                 <Grid key={product.id} item>
                   <ProductCard
                     product={product}
-                    setCartItem={() => actions.setCartItem(product)}
+                    setCartItem={() => actions.addCartItem(product)}
                   />
                 </Grid>
               );
@@ -48,13 +49,8 @@ class Home extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    actions: bindActionCreators(
-      {
-        ...actions
-      },
-      dispatch
-    )
+    actions: bindActionCreators({ ...actions }, dispatch)
   };
 };
 
-export default connect(mapDispatchToProps)(Home);
+export default connect(null, mapDispatchToProps)(Home);
