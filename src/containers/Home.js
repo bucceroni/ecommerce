@@ -4,11 +4,11 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actions from "../actions/cartActions";
 //MATERIAL-UI
-import Grid from "@material-ui/core/Grid";
-
+import { Container, Grid } from "@material-ui/core";
+//API
 import pagarme from "pagarme/browser";
 import mock from "../mock";
-
+//COMPONENTS
 import ProductCard from "../components/ProductCard";
 
 class Home extends React.Component {
@@ -19,10 +19,11 @@ class Home extends React.Component {
       .then(transactions => console.log("transactions", transactions))
       .catch(error => console.error(error));
   }
+  
   render() {
     const { actions } = this.props;
     return (
-      <div>
+      <Container>
         <Grid
           container
           direction="row"
@@ -42,7 +43,7 @@ class Home extends React.Component {
               );
             })}
         </Grid>
-      </div>
+      </Container>
     );
   }
 }

@@ -1,6 +1,7 @@
 import React from "react";
+//REACT-ROUTER
 import { Link } from "react-router-dom";
-
+//MATERIAL-UI
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -9,7 +10,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-
+//UTILS
 import formatCurrency from "../utils/formatCurrency";
 import formatImage from "../utils/formatImage";
 
@@ -18,6 +19,7 @@ const useStyles = makeStyles({
     width: 345
   },
   img: {
+    paddingTop: 20,
     objectFit: "contain"
   }
 });
@@ -26,7 +28,7 @@ const ProductCard = props => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} raised={true}>
       <CardActionArea>
         <CardMedia
           className={classes.img}
@@ -51,7 +53,6 @@ const ProductCard = props => {
           color="primary"
           to={`/detail/${props.product.id}`}
           component={Link}
-          params={props}
         >
           Detalhes
         </Button>

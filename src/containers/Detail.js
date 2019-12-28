@@ -1,14 +1,20 @@
 import React from "react";
+//REDUX
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as actions from "../actions/cartActions";
+//MATERIAL-UI
+import { Container, Typography } from "@material-ui/core";
+//API
 import mock from "../mock";
-
-import { Container } from "@material-ui/core";
-
+//COMPONENTS
 import ProductDetail from "../components/ProductDetail";
 
 class Detail extends React.Component {
   state = {
     product: {}
   };
+
   componentDidMount() {
     let getProduct = mock.filter(
       product => product.id === parseInt(this.props.match.params.id)
@@ -19,13 +25,29 @@ class Detail extends React.Component {
   }
 
   render() {
+    const { product } = this.state;
+    const { actions } = this.props;
     return (
       <Container>
-        <h1>Detalhes do Produto</h1>
-        <ProductDetail product={this.state.product} />
+        {product ? (
+          <ProductDetail
+            product={product}
+            setCartItem={() => actions.addCartItem(product)}
+          />
+        ) : (
+          <Typography gutterBottom variant="h5">
+            Produto não encontrado
+          </Typography>
+        )}
       </Container>
     );
   }
 }
 
-export default Detail;
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: bindActionCreators({ ...actions }, dispatch)
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Detail);
