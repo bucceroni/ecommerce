@@ -37,7 +37,7 @@ class Home extends React.Component {
                 <Grid key={product.id} item>
                   <ProductCard
                     product={product}
-                    setCartItem={() => actions.addCartItem(product)}
+                    addCartItem={() => actions.addCartItem(product)}
                   />
                 </Grid>
               );

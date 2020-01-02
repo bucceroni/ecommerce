@@ -26,7 +26,6 @@ const useStyles = makeStyles({
 
 const ProductCard = props => {
   const classes = useStyles();
-
   return (
     <Card className={classes.card} raised={true}>
       <CardActionArea>
@@ -56,8 +55,7 @@ const ProductCard = props => {
         >
           Detalhes
         </Button>
-
-        <Button size="small" color="primary" onClick={props.setCartItem}>
+        <Button size="small" color="primary" onClick={props.addCartItem}>
           Adicionar ao Carrinho
         </Button>
       </CardActions>

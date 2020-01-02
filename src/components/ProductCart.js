@@ -1,6 +1,6 @@
 import React from "react";
 //REACT-ROUTER
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 //MATERIAL-UI
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const ProductDetail = props => {
+const ProductCart = props => {
   const classes = useStyles();
 
   return (
@@ -75,21 +75,20 @@ const ProductDetail = props => {
               className={classes.button}
               variant="contained"
               color="primary"
-              to={`/cart`}
-              component={Link}
               onClick={props.addCartItem}
             >
-              Comprar Agora
+              +
             </Button>
           </Grid>
+          <Grid item>{props.product.total}</Grid>
           <Grid item>
             <Button
               className={classes.button}
               variant="contained"
               color="primary"
-              onClick={props.addCartItem}
+              onClick={props.deleteCartItem}
             >
-              Adicionar ao Carrinho
+              -
             </Button>
           </Grid>
         </Grid>
@@ -98,4 +97,4 @@ const ProductDetail = props => {
   );
 };
 
-export default ProductDetail;
+export default ProductCart;

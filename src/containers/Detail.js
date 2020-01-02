@@ -32,7 +32,7 @@ class Detail extends React.Component {
         {product ? (
           <ProductDetail
             product={product}
-            setCartItem={() => actions.addCartItem(product)}
+            addCartItem={() => actions.addCartItem(product)}
           />
         ) : (
           <Typography gutterBottom variant="h5">
