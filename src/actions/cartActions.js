@@ -1,4 +1,5 @@
 import * as types from "./types";
+import * as api from "./api";
 
 export function addCartItem(product) {
   return async (dispatch, getState) => {
@@ -49,6 +50,15 @@ export function deleteCartItem(product) {
     return dispatch({
       type: types.DELETE_CART_ITEM,
       payload: payload
+    });
+  };
+}
+
+export function cartCheckout(products) {
+  return async dispatch => {
+    return dispatch({
+      type: types.CART_CHECKOUT,
+      payload: api.cartCheckout(products)
     });
   };
 }

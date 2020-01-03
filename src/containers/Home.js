@@ -6,20 +6,11 @@ import * as actions from "../actions/cartActions";
 //MATERIAL-UI
 import { Container, Grid } from "@material-ui/core";
 //API
-import pagarme from "pagarme/browser";
 import mock from "../mock";
 //COMPONENTS
 import ProductCard from "../components/ProductCard";
 
 class Home extends React.Component {
-  componentDidMount() {
-    pagarme.client
-      .connect({ api_key: process.env.REACT_APP_API_KEY })
-      .then(client => client.transactions.all())
-      .then(transactions => console.log("transactions", transactions))
-      .catch(error => console.error(error));
-  }
-  
   render() {
     const { actions } = this.props;
     return (

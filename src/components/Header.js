@@ -20,11 +20,9 @@ const styles = theme => ({
   main: {
     paddingTop: 80
   },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
   title: {
-    marginRight: theme.spacing(2)
+    color: "#FFFFFF",
+    textDecoration: "none"
   }
 });
 
@@ -38,7 +36,6 @@ class Header extends React.Component {
           <Toolbar>
             <IconButton
               edge="start"
-              className={classes.menuButton}
               color="inherit"
               aria-label="open drawer"
               to="/"
@@ -46,7 +43,12 @@ class Header extends React.Component {
             >
               <HomeIcon />
             </IconButton>
-            <Typography className={classes.title} variant="h6" noWrap>
+            <Typography
+              variant="h6"
+              to="/"
+              className={classes.title}
+              component={Link}
+            >
               Ecommerce
             </Typography>
             <div className={classes.grow} />

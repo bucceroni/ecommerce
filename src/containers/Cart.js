@@ -4,9 +4,11 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actions from "../actions/cartActions";
 //MATERIAL-UI
-import { Container, Grid } from "@material-ui/core";
+import { Container, Button, Grid, Typography } from "@material-ui/core";
 //COMPONENTS
 import ProductCart from "../components/ProductCart";
+//UTILS
+import formatCurrency from "../utils/formatCurrency";
 
 class Cart extends React.Component {
   componentDidMount() {}
@@ -16,21 +18,50 @@ class Cart extends React.Component {
 
     return (
       <Container>
-        Carrinho
-        {cart.cartItems.length > 0 &&
-          // [...new Set(cart.cartItems)].map(product => {
-          cart.cartItems.map(product => {
-            return (
-              <Grid key={product.id} item>
-                <ProductCart
-                  product={product}
-                  addCartItem={() => actions.addCartItem(product)}
-                  deleteCartItem={() => actions.deleteCartItem(product)}
-                />
-              </Grid>
-            );
-          })}
-        {/* {JSON.stringify(cart)} */}
+        <Typography variant="h6">Meu Carrinho</Typography>
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+          spacing={2}
+        >
+          {cart.cartItems.length > 0 &&
+            cart.cartItems.map(product => {
+              return (
+                <Grid key={product.id} item xs={12}>
+                  <ProductCart
+                    product={product}
+                    addCartItem={() => actions.addCartItem(product)}
+                    deleteCartItem={() => actions.deleteCartItem(product)}
+                  />
+                </Grid>
+              );
+            })}
+          <Grid item xs={12}>
+            {cart.cartItems.length > 0 ? (
+              <Button
+                variant="contained"
+                color="primary"
+                fullWidth={true}
+                onClick={() => actions.cartCheckout(cart.cartItems)}
+              >
+                Finalizar pedido:{" "}
+                {formatCurrency(
+                  cart.cartItems.reduce(
+                    (acc, cur) => acc + cur.total * cur.price,
+                    0
+                  ),
+                  "BRL"
+                )}
+              </Button>
+            ) : (
+              <Typography variant="p">
+                Você ainda não escolheu nenhum produto
+              </Typography>
+            )}
+          </Grid>
+        </Grid>
       </Container>
     );
   }
