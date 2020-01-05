@@ -2,6 +2,7 @@ import * as types from "./types";
 import * as api from "./api";
 
 export function addCartItem(product) {
+  this.clearCheckout();
   return async (dispatch, getState) => {
     let cartItems = getState().cart.cartItems;
     let payload = [];
@@ -56,9 +57,41 @@ export function deleteCartItem(product) {
 
 export function cartCheckout(products) {
   return async dispatch => {
+    let res = await api.cartCheckout(products);
+    if (res.id) {
+      this.cartPayables(res.id);
+    }
+    this.clearCartItems();
     return dispatch({
       type: types.CART_CHECKOUT,
-      payload: api.cartCheckout(products)
+      payload: res
+    });
+  };
+}
+
+export function cartPayables(id) {
+  return async dispatch => {
+    return dispatch({
+      type: types.CART_PAYABLES,
+      payload: await api.cartPayables(id)
+    });
+  };
+}
+
+export function clearCartItems() {
+  return async dispatch => {
+    return dispatch({
+      type: types.CLEAR_CART_ITEMS,
+      payload: []
+    });
+  };
+}
+
+export function clearCheckout() {
+  return async dispatch => {
+    return dispatch({
+      type: types.CLEAR_CHECKOUT,
+      payload: []
     });
   };
 }

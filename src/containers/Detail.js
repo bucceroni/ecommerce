@@ -6,7 +6,7 @@ import * as actions from "../actions/cartActions";
 //MATERIAL-UI
 import { Container, Typography } from "@material-ui/core";
 //API
-import mock from "../mock";
+import mockItems from "../mock/items";
 //COMPONENTS
 import ProductDetail from "../components/ProductDetail";
 
@@ -16,7 +16,7 @@ class Detail extends React.Component {
   };
 
   componentDidMount() {
-    let getProduct = mock.filter(
+    let getProduct = mockItems.filter(
       product => product.id === parseInt(this.props.match.params.id)
     );
     this.setState({

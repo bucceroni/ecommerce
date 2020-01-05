@@ -6,7 +6,7 @@ import * as actions from "../actions/cartActions";
 //MATERIAL-UI
 import { Container, Grid } from "@material-ui/core";
 //API
-import mock from "../mock";
+import mockItems from "../mock/items";
 //COMPONENTS
 import ProductCard from "../components/ProductCard";
 
@@ -22,8 +22,8 @@ class Home extends React.Component {
           alignItems="center"
           spacing={2}
         >
-          {mock.length > 0 &&
-            mock.map(product => {
+          {mockItems.length > 0 &&
+            mockItems.map(product => {
               return (
                 <Grid key={product.id} item>
                   <ProductCard

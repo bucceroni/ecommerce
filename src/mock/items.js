@@ -1,4 +1,4 @@
-const mock = [
+const items = [
   {
     id: 1,
     name: "iPad Pro",
@@ -8,7 +8,7 @@ const mock = [
     price: 5800,
     currency: "BRL",
     image: "product_1.jpg",
-    storeId: 1,
+    storeId: "re_ck50fuj3l08dc0j6dbjrsgmn7",
     store: "Magalu"
   },
   {
@@ -20,8 +20,8 @@ const mock = [
     price: 8000,
     currency: "BRL",
     image: "product_2.png",
-    storeId: 2,
-    store: "Americanas"
+    storeId: "re_ck50fuj3l08dc0j6dbjrsgmn7",
+    store: "Magalu"
   },
   {
     id: 3,
@@ -31,8 +31,8 @@ const mock = [
     price: 2800,
     currency: "BRL",
     image: "product_3.jpg",
-    storeId: 2,
-    store: "Americanas"
+    storeId: "re_ck50fuj3l08dc0j6dbjrsgmn7",
+    store: "Magalu"
   },
   {
     id: 4,
@@ -42,8 +42,8 @@ const mock = [
     price: 1000,
     currency: "BRL",
     image: "product_4.jpg",
-    storeId: 2,
-    store: "Americanas"
+    storeId: "re_ck50fuj3l08dc0j6dbjrsgmn7",
+    store: "Magalu"
   },
   {
     id: 5,
@@ -54,8 +54,8 @@ const mock = [
     price: 6000,
     currency: "BRL",
     image: "product_5.jpg",
-    storeId: 2,
-    store: "Americanas"
+    storeId: "re_ck50fuj3l08dc0j6dbjrsgmn7",
+    store: "Magalu"
   },
   {
     id: 6,
@@ -66,8 +66,8 @@ const mock = [
     price: 1600,
     currency: "BRL",
     image: "product_6.jpg",
-    storeId: 2,
-    store: "Americanas"
+    storeId: "re_ck50fuj3l08dc0j6dbjrsgmn7",
+    store: "Magalu"
   },
   {
     id: 7,
@@ -78,8 +78,8 @@ const mock = [
     price: 2100,
     currency: "BRL",
     image: "product_7.jpg",
-    storeId: 2,
-    store: "Americanas"
+    storeId: "re_ck50fuj3l08dc0j6dbjrsgmn7",
+    store: "Magalu"
   },
   {
     id: 8,
@@ -89,8 +89,8 @@ const mock = [
     price: 199,
     currency: "BRL",
     image: "product_8.jpg",
-    storeId: 2,
-    store: "Americanas"
+    storeId: "re_ck50fuj3l08dc0j6dbjrsgmn7",
+    store: "Magalu"
   },
   {
     id: 9,
@@ -101,7 +101,7 @@ const mock = [
     price: 4600,
     currency: "BRL",
     image: "product_9.jpg",
-    storeId: 1,
+    storeId: "re_ck50fuj3l08dc0j6dbjrsgmn7",
     store: "Magalu"
   },
   {
@@ -113,9 +113,9 @@ const mock = [
     price: 800,
     currency: "BRL",
     image: "product_10.jpg",
-    storeId: 1,
+    storeId: "re_ck50fuj3l08dc0j6dbjrsgmn7",
     store: "Magalu"
   }
 ];
 
-export default mock;
+export default items;

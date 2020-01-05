@@ -2,7 +2,8 @@ import * as types from "../actions/types";
 
 const initialState = {
   cartItems: [],
-  checkout: []
+  checkout: [],
+  payables: []
 };
 
 export default function reduce(state = initialState, action) {
@@ -23,6 +24,22 @@ export default function reduce(state = initialState, action) {
       return {
         ...state,
         checkout: payload
+      };
+    case `${types.CART_PAYABLES}`:
+      return {
+        ...state,
+        payables: payload
+      };
+    case `${types.CLEAR_CART_ITEMS}`:
+      return {
+        ...state,
+        cartItems: payload
+      };
+    case `${types.CLEAR_CHECKOUT}`:
+      return {
+        ...state,
+        checkout: payload,
+        payables: payload
       };
     default:
       return state;

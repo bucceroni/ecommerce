@@ -1,3 +1,6 @@
 export const ADD_CART_ITEM = "ADD_CART_ITEM";
 export const DELETE_CART_ITEM = "DELETE_CART_ITEM";
 export const CART_CHECKOUT = "CART_CHECKOUT";
+export const CART_PAYABLES = "CART_PAYABLES";
+export const CLEAR_CART_ITEMS = "CLEAR_CART_ITEMS";
+export const CLEAR_CHECKOUT = "CLEAR_CHECKOUT";

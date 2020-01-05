@@ -1,4 +1,6 @@
 import React from "react";
+//REACT-ROUTER
+import { Link } from "react-router-dom";
 //REDUX
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -11,8 +13,6 @@ import ProductCart from "../components/ProductCart";
 import formatCurrency from "../utils/formatCurrency";
 
 class Cart extends React.Component {
-  componentDidMount() {}
-
   render() {
     const { actions, cart } = this.props;
 
@@ -45,6 +45,8 @@ class Cart extends React.Component {
                 color="primary"
                 fullWidth={true}
                 onClick={() => actions.cartCheckout(cart.cartItems)}
+                to="/checkout"
+                component={Link}
               >
                 Finalizar pedido:{" "}
                 {formatCurrency(
@@ -56,7 +58,7 @@ class Cart extends React.Component {
                 )}
               </Button>
             ) : (
-              <Typography variant="p">
+              <Typography variant="body2" color="textSecondary" component="p">
                 Você ainda não escolheu nenhum produto
               </Typography>
             )}
