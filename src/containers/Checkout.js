@@ -28,7 +28,7 @@ class Home extends React.Component {
           alignItems="center"
           spacing={2}
         >
-          {cart.checkout !== {} && cart.payables.length > 0 ? (
+          {cart.payables.length > 0 ? (
             <div>
               <Typography
                 style={{ marginTop: 30 }}
