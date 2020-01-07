@@ -17,7 +17,7 @@ import mockRecipients from "../mock/recipients";
 
 class Home extends React.Component {
   render() {
-    const { cart, classes } = this.props;
+    const { cart } = this.props;
     return (
       <Container>
         <Typography variant="h6">Checkout</Typography>
