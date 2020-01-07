@@ -38,9 +38,9 @@ class Home extends React.Component {
               >
                 Produtos
               </Typography>
-              {cart.checkout.items.map(item => {
+              {cart.checkout.items.map((item, index) => {
                 return (
-                  <div>
+                  <div key={index}>
                     <Typography component="p" variant="body1">
                       {item.title}
                     </Typography>
@@ -63,9 +63,9 @@ class Home extends React.Component {
               >
                 Recebedores
               </Typography>
-              {cart.payables.map(item => {
+              {cart.payables.map((item, index) => {
                 return (
-                  <div>
+                  <div key={index}>
                     <Typography component="p" variant="body1">
                       {mockRecipients[item.recipient_id]}
                     </Typography>
